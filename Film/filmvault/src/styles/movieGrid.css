@@ -1,0 +1,19 @@
+.movie-grid-section{
+    width:96%;
+    margin:auto;
+
+    margin-top:50px;
+    margin-bottom:40px;
+}
+
+.movie-grid-section h2{
+    font-size:35px;
+    margin-bottom:25px;
+}
+
+.movie-grid{
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:25px;
+}

@@ -1,0 +1,49 @@
+.movie-card{
+    width:280px;
+    height:190px;
+
+    background:#3E3D3D;
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+    display:flex;
+
+    transition:0.3s;
+
+    cursor:pointer;
+}
+
+.movie-card:hover{
+    transform:scale(1.03);
+}
+
+.movie-card img{
+    width:120px;
+    height:100%;
+
+    object-fit:cover;
+}
+
+.movie-info{
+    padding:15px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.movie-info h3{
+    color:#E2B751;
+
+    margin-bottom:10px;
+}
+
+.movie-info p{
+    margin-bottom:10px;
+}
+
+.card-stars{
+    font-size:20px;
+}
