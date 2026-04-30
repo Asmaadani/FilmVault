@@ -7,6 +7,7 @@ import TopMovies from './components/TopMovies'
 import MovieGrid from './components/MovieGrid'
 import MovieDetailsModal from './components/MovieDetailsModal'
 import MovieFormModal from './components/MovieFormModal'
+import TrailerModal from './components/TrailerModal'
 
 import moviesData from './data/movies'
 
@@ -23,6 +24,9 @@ function App() {
   const [ratingFilter, setRatingFilter] = useState(0)
 
   const [movieToEdit, setMovieToEdit] = useState(null)
+
+  const [showTrailer, setShowTrailer] = useState(false)
+  const [trailerUrl, setTrailerUrl] = useState("")
 
   const addMovie = (movie) => {
     setMovies([...movies, movie])
@@ -86,12 +90,28 @@ function App() {
           setShowForm(true)
           setSelectedMovie(null)
         }}
+        onTrailer={(url) => {
+          setTrailerUrl(url)
+          setShowTrailer(true)
+        }}
       />
 
       {showForm && (
         <MovieFormModal
-          onClose={() => setShowForm(false)}
+          onClose={() => {
+            setShowForm(false)
+            setMovieToEdit(null)
+          }}
           onAdd={addMovie}
+          onUpdate={updateMovie}
+          movieToEdit={movieToEdit}
+        />
+      )}
+
+      {showTrailer && (
+        <TrailerModal
+          url={trailerUrl}
+          onClose={() => setShowTrailer(false)}
         />
       )}
     </>

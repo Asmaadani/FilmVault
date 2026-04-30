@@ -11,7 +11,7 @@ const movies = [
             "Actor 2"
         ],
         image:"https://images.unsplash.com/photo-1489599849927-2ee91cede3ba",
-        trailer:"https://www.youtube.com/embed/dQw4w9WgXcQ",
+        trailer:"https://www.youtube.com/embed/w0pYv0t9rJY",
         rating:5
     },
 
@@ -27,7 +27,7 @@ const movies = [
             "Actor B"
         ],
         image:"https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c",
-        trailer:"https://www.youtube.com/embed/dQw4w9WgXcQ",
+        trailer:"https://www.youtube.com/embed/sqS6R06V8gA",
         rating:4
     },
 

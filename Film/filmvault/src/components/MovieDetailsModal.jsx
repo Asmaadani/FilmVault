@@ -1,6 +1,6 @@
 import '../styles/modal.css'
 
-function MovieDetailsModal({movie, onClose, onDelete, onEdit }) {
+function MovieDetailsModal({movie, onClose, onDelete, onEdit, onTrailer }) {
 
     if(!movie) return null
 
@@ -36,10 +36,10 @@ function MovieDetailsModal({movie, onClose, onDelete, onEdit }) {
 
                     <div className="modal-buttons">
 
-                        <button className="trailer">
+                        <button className="trailer" onClick={() => onTrailer(movie.trailer)}>
                             Watch Trailer
                         </button>
-
+                        
                         <button className="edit" onClick={() => onEdit(movie)}>
                             Edit
                         </button>

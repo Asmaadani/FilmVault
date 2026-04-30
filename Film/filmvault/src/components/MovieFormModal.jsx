@@ -3,17 +3,19 @@ import '../styles/modal.css'
 
 function MovieFormModal({onClose, onAdd, onUpdate, movieToEdit}) {
 
-    const [form, setForm] = useState({
-        title:"",
-        description:"",
-        year:"",
-        genre:"",
-        director:"",
-        actors:"",
-        image:"",
-        trailer:"",
-        rating:1
-    })
+    const [form, setForm] = useState(
+        movieToEdit || {
+            title:"",
+            description:"",
+            year:"",
+            genre:"",
+            director:"",
+            actors:"",
+            image:"",
+            trailer:"",
+            rating:1
+        }
+    )
 
     const handleChange = (e)=>{
         setForm({
@@ -25,14 +27,21 @@ function MovieFormModal({onClose, onAdd, onUpdate, movieToEdit}) {
     const handleSubmit = (e)=>{
         e.preventDefault()
 
-        const newMovie = {
+        const movieData = {
             ...form,
-            id: Date.now(),
-            actors: form.actors.split(","),
+            id: movieToEdit ? movieToEdit.id : Date.now(),
+            actors: typeof form.actors === "string"
+            ? form.actors.split(",")
+            : form.actors,
             rating: Number(form.rating)
         }
 
-        onAdd(newMovie)
+        if(movieToEdit){
+            onUpdate(movieData)
+        }else{
+            onAdd(movieData)
+        }
+
         onClose()
     }
 
@@ -50,12 +59,12 @@ function MovieFormModal({onClose, onAdd, onUpdate, movieToEdit}) {
 
                 <form onSubmit={handleSubmit} className="form">
 
-                    <input name="title" placeholder="Title" onChange={handleChange}/>
-                    <input name="description" placeholder="Description" onChange={handleChange}/>
-                    <input name="year" placeholder="Year" onChange={handleChange}/>
-                    <input name="genre" placeholder="Genre" onChange={handleChange}/>
-                    <input name="director" placeholder="Director" onChange={handleChange}/>
-                    <input name="actors" placeholder="Actors (comma separated)" onChange={handleChange}/>
+                    <input name="title" placeholder="Title" value={form.title} onChange={handleChange}/>
+                    <input name="description" placeholder="Description" value={form.description} onChange={handleChange}/>
+                    <input name="year" placeholder="Year" value={form.year} onChange={handleChange}/>
+                    <input name="genre" placeholder="Genre" value={form.genre} onChange={handleChange}/>
+                    <input name="director" placeholder="Director" value={form.director} onChange={handleChange}/>
+                    <input name="actors" placeholder="Actors (comma separated)" value={form.actors} onChange={handleChange}/>
                     <input name="image" placeholder="Image URL" onChange={handleChange}/>
                     <input name="trailer" placeholder="Trailer URL" onChange={handleChange}/>
 
@@ -64,6 +73,7 @@ function MovieFormModal({onClose, onAdd, onUpdate, movieToEdit}) {
                         type="number"
                         min="1"
                         max="5"
+                        value={form.rating}
                         onChange={handleChange}
                     />
 
