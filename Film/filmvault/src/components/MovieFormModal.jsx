@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import '../styles/modal.css'
 
-function MovieFormModal({onClose, onAdd}) {
+function MovieFormModal({onClose, onAdd, onUpdate, movieToEdit}) {
 
     const [form, setForm] = useState({
         title:"",
