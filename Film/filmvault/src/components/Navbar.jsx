@@ -1,6 +1,5 @@
 import '../styles/navbar.css'
-
-function Navbar() {
+function Navbar({onAdd}) {
     return (
         <nav className="navbar">
 
@@ -17,7 +16,7 @@ function Navbar() {
                     <option>Fantasy</option>
                 </select>
 
-                <button>
+                <button onClick={onAdd}>
                     + Ajouter Film
                 </button>
 
@@ -26,5 +25,4 @@ function Navbar() {
         </nav>
     )
 }
-
-export default Navbar
+export default Navbar ;

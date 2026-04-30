@@ -1,10 +1,13 @@
 import '../styles/movieCard.css'
 
-function MovieCard({movie}) {
+function MovieCard({movie, onClick}) {
 
     return (
 
-        <div className="movie-card">
+        <div
+            className="movie-card"
+            onClick={()=> onClick && onClick(movie)}
+        >
 
             <img src={movie.image} alt={movie.title} />
 
@@ -12,9 +15,7 @@ function MovieCard({movie}) {
 
                 <h3>{movie.title}</h3>
 
-                <p>
-                    {movie.year}
-                </p>
+                <p>{movie.year}</p>
 
                 <div className="card-stars">
                     {"⭐".repeat(movie.rating)}

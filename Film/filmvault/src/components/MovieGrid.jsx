@@ -1,7 +1,7 @@
 import MovieCard from './MovieCard'
 import '../styles/movieGrid.css'
 
-function MovieGrid({movies}) {
+function MovieGrid({movies, onSelect}) {
 
     return (
 
@@ -17,6 +17,7 @@ function MovieGrid({movies}) {
                         <MovieCard
                             key={movie.id}
                             movie={movie}
+                            onClick={onSelect}
                         />
 
                     ))

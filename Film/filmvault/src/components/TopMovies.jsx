@@ -1,7 +1,7 @@
 import MovieCard from './MovieCard'
 import '../styles/topMovies.css'
 
-function TopMovies({movies}) {
+function TopMovies({movies, onSelect}) {
 
     return (
 
@@ -16,8 +16,8 @@ function TopMovies({movies}) {
                         <MovieCard
                             key={movie.id}
                             movie={movie}
+                            onClick={onSelect}
                         />
-
                     ))
                 }
 
@@ -27,5 +27,4 @@ function TopMovies({movies}) {
 
     )
 }
-
 export default TopMovies
