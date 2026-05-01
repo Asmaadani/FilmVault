@@ -1,4 +1,4 @@
-import '../styles/modal.css'
+import '../styles/trailerModal.css'
 
 function TrailerModal({url, onClose}) {
 
@@ -6,17 +6,19 @@ function TrailerModal({url, onClose}) {
 
     return (
 
-        <div className="modal-overlay" onClick={onClose}>
+        <div
+            className="trailer-overlay"
+            onClick={onClose}
+        >
 
             <div
-                className="modal-content"
+                className="trailer-content"
                 onClick={(e)=> e.stopPropagation()}
-                style={{flexDirection:"column"}}
             >
 
                 <iframe
                     width="100%"
-                    height="400"
+                    height="100%"
                     src={url}
                     title="Trailer"
                     frameBorder="0"

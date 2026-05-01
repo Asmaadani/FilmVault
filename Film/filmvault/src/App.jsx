@@ -69,8 +69,15 @@ function App() {
       />
 
       {topMovie && (
-        <HeroSection movie={topMovie} />
+        <HeroSection movie={topMovie} 
+            onTrailer={(url) => {
+              setTrailerUrl(url)
+              setShowTrailer(true)
+            }}
+        />
       )}
+
+      
 
       <TopMovies
         movies={topThree}
@@ -81,6 +88,7 @@ function App() {
         movies={filteredMovies}
         onSelect={setSelectedMovie}
       />
+
       <MovieDetailsModal
         movie={selectedMovie}
         onClose={() => setSelectedMovie(null)}

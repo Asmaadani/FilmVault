@@ -1,51 +1,97 @@
 import '../styles/modal.css'
 
-function MovieDetailsModal({movie, onClose, onDelete, onEdit, onTrailer }) {
+function MovieDetailsModal({
+    movie,
+    onClose,
+    onDelete,
+    onEdit,
+    onTrailer
+}) {
 
     if(!movie) return null
 
     return (
 
-        <div className="modal-overlay" onClick={onClose}>
+        <div
+            className="modal-overlay"
+            onClick={onClose}
+        >
 
             <div
                 className="modal-content"
                 onClick={(e)=> e.stopPropagation()}
             >
 
-                <img src={movie.image} alt={movie.title} />
+                <img
+                    src={movie.image}
+                    alt={movie.title}
+                    className="modal-image"
+                />
 
                 <div className="modal-info">
 
-                    <h2>{movie.title}</h2>
+                    <div className="modal-top">
 
-                    <p>{movie.description}</p>
+                        <div>
 
-                    <p><strong>Year:</strong> {movie.year}</p>
-                    <p><strong>Genre:</strong> {movie.genre}</p>
-                    <p><strong>Director:</strong> {movie.director}</p>
+                            <h2>{movie.title}</h2>
 
-                    <p>
-                        <strong>Actors:</strong>
-                        {movie.actors.join(", ")}
-                    </p>
+                            <p className="creator">
+                                Création originale
+                                <span> {movie.director}</span>
+                            </p>
 
-                    <div className="stars">
+                        </div>
+
+                        <button
+                            className="trailer-btn"
+                            onClick={() => onTrailer(movie.trailer)}
+                        >
+                            + Watch Trailer
+                        </button>
+
+                    </div>
+
+                    <div className="modal-stars">
                         {"⭐".repeat(movie.rating)}
                     </div>
 
-                    <div className="modal-buttons">
+                    <div className="modal-genres">
 
-                        <button className="trailer" onClick={() => onTrailer(movie.trailer)}>
-                            Watch Trailer
+                        <span>{movie.genre}</span>
+
+                        <span>Drama</span>
+
+                    </div>
+
+                    <p className="description">
+                        {movie.description}
+                    </p>
+
+                    <p className="movie-year">
+                        sortie en : {movie.year}
+                    </p>
+
+                    <p className="actors">
+                        <strong>Acteur:</strong>{" "}
+                        {movie.actors.join(" - ")}
+                    </p>
+
+                    <div className="modal-actions">
+
+                        <button
+                            className="delete-btn"
+                            onClick={() => onDelete(movie.id)}
+                        >
+                            <img width="40" height="40" src="https://img.icons8.com/material/24/FFFFFF/filled-trash.png" alt="filled-trash"/>
+
                         </button>
-                        
-                        <button className="edit" onClick={() => onEdit(movie)}>
-                            Edit
-                        </button>
-                        
-                        <button  className="delete"  onClick={() => onDelete(movie.id)}>
-                            Delete
+
+                        <button
+                            className="edit-btn"
+                            onClick={() => onEdit(movie)}
+                        >          
+                            <img width="40" height="40" src="https://img.icons8.com/parakeet-filled/48/FFFFFF/edit-file.png" alt="edit-file"/>
                         </button>
 
                     </div>

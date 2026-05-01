@@ -1,0 +1,50 @@
+.simple-card{
+    position:relative;
+
+    width:220px;
+    height:320px;
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.simple-card:hover{
+    transform:scale(1.05);
+}
+
+.simple-card img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+}
+
+.simple-overlay{
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+        to top,
+        rgba(0,0,0,0.9),
+        rgba(0,0,0,0.1)
+    );
+
+    display:flex;
+    align-items:flex-end;
+
+    padding:18px;
+}
+
+.simple-overlay h3{
+    color:white;
+
+    font-size:20px;
+
+    font-weight:700;
+}

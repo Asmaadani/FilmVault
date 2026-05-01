@@ -1,14 +1,15 @@
 import '../styles/navbar.css'
 function Navbar({onAdd, onFilterGenre, onFilterRating}) {
+
     return (
         <nav className="navbar">
 
             <div className="logo">
+                <img width="40" height="40" src="https://img.icons8.com/ios-filled/50/e2b751/clapperboard.png" alt="clapperboard"/>
                 FilmVault
             </div>
 
             <div className="nav-actions">
-
                 <select onChange={(e)=> onFilterGenre(e.target.value)}>
                     <option value="">All Genres</option>
                     <option value="Action">Action</option>

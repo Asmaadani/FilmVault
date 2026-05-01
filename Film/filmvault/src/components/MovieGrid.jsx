@@ -1,5 +1,6 @@
-import MovieCard from './MovieCard'
+import SimpleMovieCard from './SimpleMovieCard'
 import '../styles/movieGrid.css'
+
 
 function MovieGrid({movies, onSelect}) {
 
@@ -14,12 +15,11 @@ function MovieGrid({movies, onSelect}) {
                 {
                     movies.map(movie => (
 
-                        <MovieCard
+                        <SimpleMovieCard
                             key={movie.id}
                             movie={movie}
                             onClick={onSelect}
                         />
-
                     ))
                 }
 

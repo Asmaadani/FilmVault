@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import '../styles/modal.css'
-
+import '../styles/formModal.css'
 function MovieFormModal({onClose, onAdd, onUpdate, movieToEdit}) {
 
     const [form, setForm] = useState(
@@ -47,37 +46,107 @@ function MovieFormModal({onClose, onAdd, onUpdate, movieToEdit}) {
 
     return (
 
-        <div className="modal-overlay" onClick={onClose}>
+        <div className="form-overlay" onClick={onClose}>
 
             <div
-                className="modal-content"
+                className="form-modal"
                 onClick={(e)=> e.stopPropagation()}
-                style={{flexDirection:"column"}}
             >
 
-                <h2 style={{color:"black", margin:"15px"}}>Add Movie</h2>
+                <h2>
+                    {movieToEdit ? "Edit Movie" : "Add Movie"}
+                </h2>
 
-                <form onSubmit={handleSubmit} className="form">
-
-                    <input name="title" placeholder="Title" value={form.title} onChange={handleChange}/>
-                    <input name="description" placeholder="Description" value={form.description} onChange={handleChange}/>
-                    <input name="year" placeholder="Year" value={form.year} onChange={handleChange}/>
-                    <input name="genre" placeholder="Genre" value={form.genre} onChange={handleChange}/>
-                    <input name="director" placeholder="Director" value={form.director} onChange={handleChange}/>
-                    <input name="actors" placeholder="Actors (comma separated)" value={form.actors} onChange={handleChange}/>
-                    <input name="image" placeholder="Image URL" onChange={handleChange}/>
-                    <input name="trailer" placeholder="Trailer URL" onChange={handleChange}/>
+                <form onSubmit={handleSubmit}>
 
                     <input
-                        name="rating"
+                        type="text"
+                        name="title"
+                        placeholder="Movie Title"
+                        value={form.title}
+                        onChange={handleChange}
+                    />
+
+                    <textarea
+                        name="description"
+                        placeholder="Description"
+                        value={form.description}
+                        onChange={handleChange}
+                    ></textarea>
+
+                    <input
                         type="number"
+                        name="year"
+                        placeholder="Year"
+                        value={form.year}
+                        onChange={handleChange}
+                    />
+
+                    <input
+                        type="text"
+                        name="genre"
+                        placeholder="Genre"
+                        value={form.genre}
+                        onChange={handleChange}
+                    />
+
+                    <input
+                        type="text"
+                        name="director"
+                        placeholder="Director"
+                        value={form.director}
+                        onChange={handleChange}
+                    />
+
+                    <input
+                        type="text"
+                        name="actors"
+                        placeholder="Actors separated by comma"
+                        value={form.actors}
+                        onChange={handleChange}
+                    />
+
+                    <input
+                        type="text"
+                        name="image"
+                        placeholder="Image URL"
+                        value={form.image}
+                        onChange={handleChange}
+                    />
+
+                    <input
+                        type="text"
+                        name="trailer"
+                        placeholder="Trailer URL"
+                        value={form.trailer}
+                        onChange={handleChange}
+                    />
+
+                    <input
+                        type="number"
+                        name="rating"
                         min="1"
                         max="5"
+                        placeholder="Rating"
                         value={form.rating}
                         onChange={handleChange}
                     />
 
-                    <button type="submit">Add</button>
+                    <div className="form-buttons">
+
+                        <button type="submit">
+                            {movieToEdit ? "Update" : "Add"}
+                        </button>
+
+                        <button
+                            type="button"
+                            className="cancel-btn"
+                            onClick={onClose}
+                        >
+                            Cancel
+                        </button>
+
+                    </div>
 
                 </form>
 

@@ -1,34 +1,45 @@
 import '../styles/hero.css'
 
-function HeroSection({movie}) {
+function HeroSection({movie, onTrailer}) {
 
     return (
 
-        <section className="hero"
+        <section
+            className="hero"
             style={{
-                backgroundImage:`url(${movie.image})`
+                backgroundImage: `url(${movie.image})`
             }}
         >
 
-            <div className="overlay">
+            <div className="hero-overlay">
 
-                <h1>{movie.title}</h1>
+                <div className="hero-content">
 
-                <p className="director">
-                    Scénariste {movie.director}
-                </p>
+                    <h1>{movie.title}</h1>
 
-                <div className="stars">
-                    {"⭐".repeat(movie.rating)}
+                    <p className="writer">
+                        Scénariste {movie.director}
+                    </p>
+
+                    <div className="hero-stars">
+                        {"⭐".repeat(movie.rating)}
+                    </div>
+
+                    <div className="hero-genres">
+
+                        <span>{movie.genre}</span>
+
+                        <span>Thriller</span>
+
+                    </div>
+
+                    <button className="watch-btn"
+                        onClick={() => onTrailer(movie.trailer)}
+                    >
+                        + Watch Trailer
+                    </button>
+
                 </div>
-
-                <div className="genres">
-                    <span>{movie.genre}</span>
-                </div>
-
-                <button>
-                    + Watch Trailer
-                </button>
 
             </div>
 
