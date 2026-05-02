@@ -61,7 +61,8 @@ function App() {
   }, [movies])
 
   return (
-    <>
+    
+    <div className="container">
       <Navbar
         onAdd={() => setShowForm(true)}
         onFilterGenre={setGenreFilter}
@@ -122,7 +123,7 @@ function App() {
           onClose={() => setShowTrailer(false)}
         />
       )}
-    </>
+    </div>
   )
 }
 
